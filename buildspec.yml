@@ -13,7 +13,7 @@ phases:
     commands:
       - echo "Installing dependencies..."
       - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-      -  pip install requirements.txt
+      - pip install requirements.txt
   build:
     commands:
       - echo "Running tests..."
