@@ -19,7 +19,7 @@ phases:
       - echo "Running tests..."
       - echo "Building Docker image..."
       - echo "Shilpa@18" | docker login -u "shilpat18" --password-stdin "/hub.docker.com/repositories/shilpat18"
-      - docker build -t "/hub.docker.com/repositories/shilpat18/AWS-DevOps:latest" .
+      - docker build -t "/hub.docker.com/repositories/shilpat18/aws-devops-repo:latest" .
       - docker push "/hub.docker.com/repositories/shilpat18/AWS-DevOps:latest"
   post_build:
     commands:
