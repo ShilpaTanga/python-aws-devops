@@ -12,7 +12,8 @@ phases:
   pre_build:
     commands:
       - echo "Installing dependencies..."
-      - sudo pip install requirements.txt
+      - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+      -  pip install requirements.txt
   build:
     commands:
       - echo "Running tests..."
