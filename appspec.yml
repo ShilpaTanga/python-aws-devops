@@ -1,12 +1,1 @@
-version: 0.0
-os: linux
 
-hooks:
-  ApplicationStop:
-    - location: start_conrainer.sh
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: start_container.sh
-      timeout: 300
-      runas: root
