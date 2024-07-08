@@ -19,8 +19,8 @@ phases:
       - echo "Running tests..."
       - echo "Building Docker image..."
       - echo "Shilpa@18" | docker login -u "shilpat18" --password-stdin "/hub.docker.com/repositories/shilpat18"
-      - docker build -t "https://hub.docker.com/r/shilpat18/aws-devops-repo:latest" .
-      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/AWS-DevOps:latest"
+      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/python-aws-devops:latest" .
+      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/python-aws-devops:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
