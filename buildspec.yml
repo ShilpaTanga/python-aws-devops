@@ -19,7 +19,7 @@ phases:
       - echo "Running tests..."
       - echo "Building Docker image..."
       - echo "Shilpa@18" | docker login -u "shilpat18" --password-stdin "/hub.docker.com/repositories/shilpat18"
-      - docker build -t "https://hub.docker.com/r/shilpat18/aws-devops-repo/python-aws-devops:latest" .
+      - docker build -t shilpat18/aws-devops-repo:latest .
       - docker push "/hub.docker.com/repositories/shilpat18/python-aws-devops:latest"
   post_build:
     commands:
@@ -27,5 +27,6 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: ../AWS-DevOps
+  base-directory: ../python-aws-devops
+
 
