@@ -2,9 +2,9 @@ version: 0.2
 
 env:
   parameter-store:
-    DOCKER_REGISTRY_USERNAME: /myapp/docker-crendentials/username
-    DOCKER_REGISTRY_PASSWORD: /myapp/docker-crendentials/password
-    DOCKER_REGISTRY_URL: /myapp/docker-crendentials/url
+    DOCKER_REGISTRY_USERNAME: /myapp/docker-credentials/username
+    DOCKER_REGISTRY_PASSWORD: /myapp/docker-credentials/password
+    DOCKER_REGISTRY_URL: /myapp/docker-registry/url
 phases:
   install:
     runtime-versions:
@@ -12,21 +12,20 @@ phases:
   pre_build:
     commands:
       - echo "Installing dependencies..."
-      - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-      - pip3 install -r requirements.txt
+      - pip install -r day-13/simple-python-app/requirements.txt
   build:
     commands:
       - echo "Running tests..."
+      - cd day-13/simple-python-app/
       - echo "Building Docker image..."
-      - echo "Shilpa@18" | docker login -u "shilpat18" --password-stdin "/hub.docker.com/repositories/shilpat18"
-      - docker build -t shilpat18/aws-devops-repo:latest .
-      - docker push "shilpat18/aws-devops-repo/python-aws-devops:latest"
+      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
+      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest" .
+      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
 artifacts:
   files:
     - '**/*'
-  base-directory: ../python-aws-devops
-
+  base-directory: ../simple-python-app
 
